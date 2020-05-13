@@ -1,2 +1,2 @@
 # sistema-de-controle-de-gastos
-Sistema de Suporte financeiro
+Sistema de controla de gastos
