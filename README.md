@@ -1,6 +1,8 @@
 # Sistema de Controle de Gastos Familiar
 
-![](/SCGF/img-interfaces/pag-home.png)
+<img src="/SCGF/img-interfaces/tela-login.png" alt="" width="200"/>
+<img src="/SCGF/img-interfaces/tela-cadastro.png" alt="" width="200"/>
+<img src="/SCGF/img-interfaces/tela-home.png" alt="" width="200"/>
 
 > Status do projeto: em desenvolvimento
 
