@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - SCGF{% endblock %}
+
+{% block content %}
+    <div class="offset-1 col-10 home-div">
+
+        <h1>Saldo R$ 4 000,00</h1>
+        <div class="values">
+            <p class="receitas">Receitas R$ 4 300,00</p>
+            <p class="despesas">Despesas R$ 300,00</p>
+        </div>
+        
+
+        <h2>Transações</h2>
+        <h4>10 de Maio</h4>
+
+        <!--
+            <div class="col-2 add-div">
+            <i class="fas fa-plus"></i>Adicionar Tarefa
+
+            <div class="col-9 search-div">
+                <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome da tarefa para buscar">
+                <i class="fas fa-search"></i>
+            </div>
+        </div> -->
+        
+        
+        <ul class="transaction-list">
+            <li class="transaction-item">
+                <span>Salário</span>
+                <span>R$ + 4 000,00</span>
+                <span><i class="fas fa-trash"></i></span>
+                <span><i class="fas fa-edit"></i></span>
+            </li>
+            <li class="transaction-item">
+                <span>Conta de internet</span>
+                <span>R$ - 100,00</span>
+                <span><i class="fas fa-trash"></i></span>
+                <span><i class="fas fa-edit"></i></span>
+            </li>
+            <li class="transaction-item">
+                <span>Boleto Cartão de Crédito</span>
+                <span>R$ - 200,00</span>
+                <span><i class="fas fa-trash"></i></span>
+                <span><i class="fas fa-edit"></i></span>
+            </li>
+            <li class="transaction-item">
+                <span>Presente</span>
+                <span>R$ + 300,00</span>
+                <span><i class="fas fa-trash"></i></span>
+                <span><i class="fas fa-edit"></i></span>
+            </li>
+            <li class="transaction-item">
+                <span>Titulo da Tarefa</span>
+                <span>R$ - 100,00</span>
+                <span><i class="fas fa-trash"></i></span>
+                <span><i class="fas fa-edit"></i></span>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

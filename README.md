@@ -1,14 +1,14 @@
 # Sistema de Controle de Gastos Familiar
 
-<img src="/SCGF/img-interfaces/tela-login.png" alt="" width="200"/>
-<img src="/SCGF/img-interfaces/tela-cadastro.png" alt="" width="200"/>
-<img src="/SCGF/img-interfaces/tela-home.png" alt="" width="200"/>
+<img src="/SCGF/img-interfaces/tela-login.png" alt="" width="400"/>
+<img src="/SCGF/img-interfaces/tela-cadastro.png" alt="" width="400"/>
+<img src="/SCGF/img-interfaces/tela-home.png" alt="" width="400"/>
 
 > Status do projeto: em desenvolvimento
 
 ## Descrição do projeto
  Tem como objetivo proporcionar de maneira fácil o controle de finanças aos usuários dando uma visão clara dos custos e ganhos, possibilitando que o usúario crie um grupo com os integrantes de sua fámilia para uma visão geral dos custos, e tambem irá gerar relatórios de despesas e receitas do mês e do grupo.
- O sistema será desenvolvido em linguagem Python e utilizará o Banco de Dados PostgreSQL.
+ O sistema será desenvolvido em linguagem Python e utilizará o Banco de Dados SQLite.
 
 
 ## Descrição dos usuários
@@ -48,6 +48,36 @@
 
 
 ## REQUISITOS NÃO FUNCIONAIS
-**RNF001** Linguagem de programação utilizada será Python
+**RNF001** Linguagem de programação utilizada será Python com o Django
 
-**RNF002** O SGBD utilizado será o PostgreSQL
+**RNF002** O SGBD utilizado será o SQLite
+
+
+## INICIAR O PROJETO
+Entrar na pasta do virtual env
+comando # cd .\env\
+
+Ativar o virtual env
+comando # .\Scripts\activate
+
+Voltar para a pasta do projeto
+comando # cd ..
+
+Entrar na pasta SCGF
+comando # cd .\SCGF\
+
+Rodar o servidor da aplicação
+comando # python manage.py runserver
+
+## SAIR DO PROJETO
+Desligar o servidor da aplicação
+comando # teclar ctrl + C
+
+Voltar para a pasta do projeto
+comando # cd ..
+
+Entrar na pasta do virtual env
+comando # cd .\env\
+
+Desativar o virtual env
+comando # .\Scripts\deactivate
