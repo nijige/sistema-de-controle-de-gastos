@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\env",
+    "\\env\\Lib",
+    "\\env\\Lib\\site-packages",
+    "\\env\\Lib\\site-packages\\pkg_resources",
+    "\\env\\Lib\\site-packages\\pkg_resources\\_vendor",
+    "\\SCGF",
+    "\\SCGF\\app",
+    "\\SCGF\\app\\migrations"
+  ],
+  "SelectedNode": "\\SCGF\\app\\migrations\\__init__.py",
+  "PreviewInSolutionExplorer": false
+}
