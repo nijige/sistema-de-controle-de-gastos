@@ -54,30 +54,8 @@
 
 
 ## INICIAR O PROJETO
-Entrar na pasta do virtual env
-comando # cd .\env\
-
-Ativar o virtual env
-comando # .\Scripts\activate
-
-Voltar para a pasta do projeto
-comando # cd ..
-
-Entrar na pasta SCGF
-comando # cd .\SCGF\
+Instalar todos os pacotes necessários do projeto
+pip install -r requirements.txt
 
 Rodar o servidor da aplicação
 comando # python manage.py runserver
-
-## SAIR DO PROJETO
-Desligar o servidor da aplicação
-comando # teclar ctrl + C
-
-Voltar para a pasta do projeto
-comando # cd ..
-
-Entrar na pasta do virtual env
-comando # cd .\env\
-
-Desativar o virtual env
-comando # .\Scripts\deactivate

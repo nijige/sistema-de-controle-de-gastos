@@ -1,3 +1,7 @@
 .vscode
 *pyc
 .idea
+.vs
+.pyproj
+.user
+env/
