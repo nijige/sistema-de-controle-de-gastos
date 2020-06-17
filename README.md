@@ -1,8 +1,8 @@
 # Sistema de Controle de Gastos Familiar
 
-<img src="../img-interfaces/tela-login.png" alt="" width="300"/>
-<img src="../img-interfaces/tela-cadastro.png" alt="" width="300"/>
-<img src="../img-interfaces/tela-home.png" alt="" width="300"/>
+<img src="./img-interfaces/tela-login.png" alt="" width="300"/>
+<img src="./img-interfaces/tela-cadastro.png" alt="" width="300"/>
+<img src="./img-interfaces/tela-home.png" alt="" width="300"/>
 
 > Status do projeto: em desenvolvimento
 
