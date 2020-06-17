@@ -6,6 +6,9 @@
 .user
 
 # Environments
+env
+./env/
+.\env\
 .env
 .venv
 env/
