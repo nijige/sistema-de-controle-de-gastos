@@ -4,4 +4,4 @@
 .vs
 .pyproj
 .user
-env/
+.\env
