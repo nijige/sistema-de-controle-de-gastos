@@ -6,15 +6,12 @@ body {
 }
 
 
+
 /* Navbar */
 
 .navbar {
     border-bottom: 1px solid #333;
     margin-bottom: 20px;
-    padding: 0;
-}
-
-.container {
     padding: 0;
 }
 
@@ -69,18 +66,38 @@ h2, h3, h4 {
 }
 
 .transaction-list {
-    padding-left: 0;
-}
-
-.transaction-item {
     list-style: none;
     font-size: 20px;
-    height: 50px;
-    padding-top: 10px;
-    border: 1px dashed #ccc;
+    padding: 0;
 
     color: white;
 }
+
+.transaction-item {
+   align-items: center;
+}
+
+.transaction-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #50FA7B;
+    border: 4px solid #50FA7B;
+    box-sizing: border-box;
+    border-radius: 10px;
+    
+}
+
+.transaction-name {
+
+}
+
+.transaction-value {
+
+}
+
+
 
 .fas.fa-trash, .fas.fa-edit {
     cursor: pointer;

@@ -58,4 +58,4 @@ Instalar todos os pacotes necessários do projeto
 pip install -r requirements.txt
 
 Rodar o servidor da aplicação
-comando # python manage.py runserver
+python manage.py runserver
