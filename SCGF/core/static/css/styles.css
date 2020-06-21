@@ -65,19 +65,13 @@ h2, h3, h4 {
     color: white;
 }
 
-.transaction-list {
-    list-style: none;
-    font-size: 20px;
-    padding: 0;
-
-    color: white;
-}
-
 .transaction-item {
-   align-items: center;
+    margin-left: auto;
+    margin-bottom: 10px;
+
 }
 
-.transaction-div {
+.item-div {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -86,18 +80,12 @@ h2, h3, h4 {
     border: 4px solid #50FA7B;
     box-sizing: border-box;
     border-radius: 10px;
-    
+    padding: 20px 5px;
 }
 
-.transaction-name {
-
+.item-div p {
+    margin-bottom: 0;
 }
-
-.transaction-value {
-
-}
-
-
 
 .fas.fa-trash, .fas.fa-edit {
     cursor: pointer;
