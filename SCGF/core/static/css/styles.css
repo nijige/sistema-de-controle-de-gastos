@@ -35,6 +35,7 @@ h1 {
     font-size: 32px;
     line-height: 37px;
     text-align: center;
+    margin-top: 50px;
 
     color: #BD93F9;
 }
@@ -43,11 +44,12 @@ div .values {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 20px;
 }
 
 .receitas {
     font-style: normal;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 28px;
 
     color: #50FA7B;
@@ -55,7 +57,7 @@ div .values {
 
 .despesas {
     font-style: normal;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 28px;
 
     color: #FF5555;
@@ -63,12 +65,16 @@ div .values {
 
 h2, h3, h4 {
     color: white;
+    margin-top: 20px;
+}
+
+.date-transactions {
+    font-size: 16px;
 }
 
 .transaction-item {
     margin-left: auto;
     margin-bottom: 10px;
-
 }
 
 .item-div {
@@ -76,30 +82,58 @@ h2, h3, h4 {
     align-items: center;
     justify-content: space-between;
 
-    background: #50FA7B;
-    border: 4px solid #50FA7B;
     box-sizing: border-box;
     border-radius: 10px;
-    padding: 20px 5px;
+    padding: 15px 5px;
+}
+
+.item-receita {
+    background: #BD93F9;
+    border: 4px solid #50FA7B;
+}
+
+.item-despesa {
+    background: #BD93F9;
+    border: 4px solid #FF5555;
+}
+
+.item-pago-receita {
+    background: #50FA7B;
+    border: 4px solid #50FA7B;
+}
+
+.item-pago-despesa {
+    background: #FF5555;
+    border: 4px solid #FF5555;
 }
 
 .item-div p {
+    font-size: 20px;
     margin-bottom: 0;
+    color: white;
+}
+
+.item-edit {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .fas.fa-trash, .fas.fa-edit {
     cursor: pointer;
     margin: 5px;
     font-size: 20px;
-    float: right;
 }
 
 .fas.fa-trash {
-    color: #db1e47;
+    color: #FF5555;
 }
 
 .fas.fa-edit {
-    color: #13c43f;
+    color: #50FA7B;
 }
 
 
