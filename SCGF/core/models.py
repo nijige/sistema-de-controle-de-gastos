@@ -38,7 +38,7 @@ class Transacao(models.Model):
         return self.descricao
 
     def get_data_transacao(self):
-        return self.data_transacao.strftime('%d/%m/%Y %H:%M')
+        return self.data_transacao.strftime('%d/%m/%Y')
     
     def get_data_input_transacao(self):
-        return self.data_transacao.strftime('%Y-%m-%dT%H:%M')
+        return self.data_transacao.strftime('%Y-%m-%d')

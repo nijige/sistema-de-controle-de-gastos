@@ -160,6 +160,21 @@ h2, h3, h4 {
 }
 
 
+/* Add Transação */
+div form {
+    margin-top: 30px;
+}
+
+div form p {
+    color: white;
+    
+}
+
+form label, form input {
+    display: block;
+}
+
+
 /* Rodapé */
 
 footer {
