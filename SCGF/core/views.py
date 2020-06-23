@@ -10,3 +10,6 @@ def home(request):
 
 def group(request):
     return render(request, 'pages/group.html')
+
+def newTransaction(request):
+    return render(request, 'pages/newTransaction.html')
