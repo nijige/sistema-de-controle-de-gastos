@@ -12,69 +12,69 @@
         </div>
 
         <h2>Transações</h2>
-
-        
         
         <div class="transactions">
-            <h4 class="date-transactions">10 de Maio</h4>
-            <div class="row transaction-item">
-                <div class="col-10 item-div item-pago-receita">
-                    <p>Salário</p>
-                    <p class="item-valor">R$ + 4 000,00</p> 
-                </div>
-                <div class="col-2 item-edit">
-                    <span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span>
-                    <span class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></span>
-                </div>
-            </div>
+
+            {% for transacao in transacoes %}
+                <h4 class="date-transactions">{{ transacao.data_transacao }}</h4>
+
+                {% if transacao.pago == "nao_pago" and transacao.tipo_transacao == "receita" %}
+                    <div class="row transaction-item">
+                        <div class="col-10 item-div item-receita">
+                            <p>{{ transacao.descricao }}</p>
+                            <p class="item-valor">{{ transacao.valor }}</p> 
+                        </div>
+                        <div class="col-2 item-edit">
+                            <span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span>
+                            <span class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></span>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if transacao.pago == "nao_pago" and transacao.tipo_transacao == "despesa" %}
+                    <div class="row transaction-item">
+                        <div class="col-10 item-div item-despesa">
+                            <p>{{ transacao.descricao }}</p>
+                            <p class="item-valor">{{ transacao.valor }}</p> 
+                        </div>
+                        <div class="col-2 item-edit">
+                            <span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span>
+                            <span class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></span>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if transacao.pago == "pago" and transacao.tipo_transacao == "receita" %}
+                    <div class="row transaction-item">
+                        <div class="col-10 item-div item-pago-receita">
+                            <p>{{ transacao.descricao }}</p>
+                            <p class="item-valor">{{ transacao.valor }}</p> 
+                        </div>
+                        <div class="col-2 item-edit">
+                            <span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span>
+                            <span class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></span>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if transacao.pago == "pago" and transacao.tipo_transacao == "despesa" %}
+                    <div class="row transaction-item">
+                        <div class="col-10 item-div item-pago-despesa">
+                            <p>{{ transacao.descricao }}</p>
+                            <p class="item-valor">{{ transacao.valor }}</p> 
+                        </div>
+                        <div class="col-2 item-edit">
+                            <span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span>
+                            <span class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></span>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            <a id="add-link" href="transaction/">
+                <button type="button" class="btn btn-primary btn-lg">Adicionar Transação</button>
+            </a>
             
-            <div class="row transaction-item">
-                <div class="col-10 item-div item-despesa">
-                    <p>Conta de internet</p>
-                    <p class="item-valor">R$ - 100,00</p>
-                </div>
-                <div class="col-2 item-edit">
-                    <span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span>
-                    <span class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></span>
-                </div>
-            </div>
-                    
-            <div class="row transaction-item">
-                <div class="col-10 item-div item-pago-despesa">
-                    <p>Boleto Cartão de Crédito</p>
-                    <p class="item-valor">R$ - 200,00</p>
-                </div>
-                <div class="col-2 item-edit">
-                    <span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span>
-                    <span class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></span>
-                </div>
-            </div>
-
-            <h4 class="date-transactions">12 de Maio</h4>
-
-            <div class="row transaction-item">
-                <div class="col-10 item-div item-receita">
-                    <p>Presente</p>
-                    <p class="item-valor">R$ + 300,00</p>
-                </div>
-                <div class="col-2 item-edit">
-                    <span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span>
-                    <span class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></span>
-                </div>
-            </div>
-            
-            <div class="row transaction-item">
-                <div class="col-10 item-div item-despesa">
-                    <p>Titulo da Tarefa</p>
-                    <p class="item-valor">R$ - 100,00</p>
-                </div>
-                <div class="col-2 item-edit">
-                    <span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span>
-                    <span class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></span>
-                </div>
-            </div>
-
-            <button type="button" class="btn btn-primary btn-lg">Adicionar Transação</button>
         
         </div>
           
