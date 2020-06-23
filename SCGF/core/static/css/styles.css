@@ -159,6 +159,24 @@ h2, h3, h4 {
     border-radius: 25px;
 }
 
+#add-link {
+    text-decoration: none;
+}
+
+/* Add Transação */
+div form {
+    margin-top: 30px;
+}
+
+div form p {
+    color: white;
+    
+}
+
+form label, form input {
+    display: block;
+}
+
 
 /* Rodapé */
 
