@@ -5,7 +5,7 @@
 
 {% block content %}
     <h1>Adicione nova Transação</h1>
-    <form action="" method="post">
+    <form method="POST">
         {% csrf_token %}
         <div class="col-8 m-auto">
             {{ form.as_p }}

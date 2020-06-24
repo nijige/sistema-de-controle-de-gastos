@@ -190,3 +190,13 @@ footer p {
     color: white;
     text-align: center;
 }
+
+
+/* Messages */
+ul.messages {
+    padding: 0;
+}
+
+ul.messages li {
+    list-style: none;
+}
