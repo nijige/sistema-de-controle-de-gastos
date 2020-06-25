@@ -4,9 +4,11 @@
 {% block title %}Group - SCGF{% endblock %}
 
 {% block content %}
-    <h1>Page Group</h1>
-    <h1>{{ total }}</h1>
-    <h1>{{ receita }}</h1>
-    <h1>{{ despesa }}</h1>
+
+    <div id="saldo"></div>
+    <div class="values">
+        <p class="receitas">Receitas R$ {{ receita }}</p>
+        <p class="despesas">Despesas R$ {{ despesa }}</p>
+    </div>
     
 {% endblock %}

@@ -4,11 +4,10 @@
 
 {% block content %}
     <div class="col-8 m-auto home-div">
-
-        <h1>Saldo R$ 4 000,00</h1>
+        <div id="saldo"></div>
         <div class="values">
-            <p class="receitas">Receitas R$ 4 300,00</p>
-            <p class="despesas">Despesas R$ 300,00</p>
+            <p class="receitas">Receitas R$ {{ receita }}</p>
+            <p class="despesas">Despesas R$ {{ despesa }}</p>
         </div>
 
         <h2>Transações</h2>

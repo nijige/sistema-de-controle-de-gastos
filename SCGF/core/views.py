@@ -3,27 +3,32 @@ from django.http import HttpResponse
 from .models import Transacao
 from .forms import TransacaoForm
 from django.contrib import messages
-from django.db.models import Count, Sum
+from django.db.models import Sum
 
 # Create your views here.
 
 def home(request):
-    transacoes = Transacao.objects.all()
-    return render(request, 'pages/home.html', {'transacoes': transacoes})
+    transacoes = Transacao.objects.filter(user=request.user)
+    receita = Transacao.objects.filter(user=request.user, tipo_transacao='receita').aggregate(sum=Sum('valor'))['sum']
+    despesa = Transacao.objects.filter(user=request.user, tipo_transacao='despesa').aggregate(sum=Sum('valor'))['sum']
+
+    return render(request, 'pages/home.html', {'transacoes': transacoes, 'receita': receita, 'despesa': despesa})
 
 def group(request):
-    total = Transacao.objects.aggregate(sum_total=Sum('valor'))
-    receita = Transacao.objects.filter(tipo_transacao='receita').aggregate(Sum('valor'))
-    despesa = Transacao.objects.filter(tipo_transacao='despesa').aggregate(Sum('valor'))
+    receita = Transacao.objects.filter(tipo_transacao='receita').aggregate(sum=Sum('valor'))['sum']
+    despesa = Transacao.objects.filter(tipo_transacao='despesa').aggregate(sum=Sum('valor'))['sum']
     
-    return render(request, 'pages/group.html', { 'receita': receita, 'despesa': despesa, 'total': total})
+    return render(request, 'pages/group.html', {'receita': receita, 'despesa': despesa})
 
 def newTransaction(request):
     if request.method == 'POST':
         form = TransacaoForm(request.POST)
         
         if form.is_valid():
-            form.save()
+            transacao = form.save(commit=False)
+            transacao.user = request.user
+            transacao.save()
+
             return redirect('/')
     else:
         form = TransacaoForm()
