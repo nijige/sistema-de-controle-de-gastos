@@ -42,3 +42,4 @@ class Transacao(models.Model):
     
     def get_data_input_transacao(self):
         return self.data_transacao.strftime('%Y-%m-%d')
+

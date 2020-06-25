@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Transacao
 from .forms import TransacaoForm
 from django.contrib import messages
+from django.db.models import Count, Sum
 
 # Create your views here.
 
@@ -11,14 +12,18 @@ def home(request):
     return render(request, 'pages/home.html', {'transacoes': transacoes})
 
 def group(request):
-    return render(request, 'pages/group.html')
+    total = Transacao.objects.aggregate(sum_total=Sum('valor'))
+    receita = Transacao.objects.filter(tipo_transacao='receita').aggregate(Sum('valor'))
+    despesa = Transacao.objects.filter(tipo_transacao='despesa').aggregate(Sum('valor'))
+    
+    return render(request, 'pages/group.html', { 'receita': receita, 'despesa': despesa, 'total': total})
 
 def newTransaction(request):
     if request.method == 'POST':
         form = TransacaoForm(request.POST)
         
         if form.is_valid():
-            transacao.save()
+            form.save()
             return redirect('/')
     else:
         form = TransacaoForm()
