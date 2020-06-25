@@ -12,7 +12,14 @@
         </div>
 
         <h2>Transações</h2>
-        
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages%}
+                    <li {% if message.tags %}class="alert alert-{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
         <div class="transactions">
 
             {% for transacao in transacoes %}
@@ -25,8 +32,8 @@
                             <p class="item-valor">{{ transacao.valor }}</p> 
                         </div>
                         <div class="col-2 item-edit">
-                            <span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span>
-                            <span class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></span>
+                            <a href="delete/{{transacao.id}}"><span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span></a>
+                            <a href="edit/{{transacao.id}}"><span><i class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></i></span></a>
                         </div>
                     </div>
                 {% endif %}
@@ -38,8 +45,8 @@
                             <p class="item-valor">{{ transacao.valor }}</p> 
                         </div>
                         <div class="col-2 item-edit">
-                            <span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span>
-                            <span class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></span>
+                            <a href="delete/{{transacao.id}}"><span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span></a>
+                            <a href="edit/{{transacao.id}}"><span><i class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></i></span></a>
                         </div>
                     </div>
                 {% endif %}
@@ -51,8 +58,8 @@
                             <p class="item-valor">{{ transacao.valor }}</p> 
                         </div>
                         <div class="col-2 item-edit">
-                            <span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span>
-                            <span class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></span>
+                            <a href="delete/{{transacao.id}}"><span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span></a>
+                            <a href="edit/{{transacao.id}}"><span><i class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></i></span></a>
                         </div>
                     </div>
                 {% endif %}
@@ -64,8 +71,8 @@
                             <p class="item-valor">{{ transacao.valor }}</p> 
                         </div>
                         <div class="col-2 item-edit">
-                            <span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span>
-                            <span class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></span>
+                            <a href="delete/{{transacao.id}}"><span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span></a>
+                            <a href="edit/{{transacao.id}}"><span><i class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></i></span></a>
                         </div>
                     </div>
                 {% endif %}
