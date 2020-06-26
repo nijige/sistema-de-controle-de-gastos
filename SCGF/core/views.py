@@ -8,6 +8,7 @@ from django.contrib import messages
 def login(request):
     return render(request,'pages/login.html')
 
+
 def home(request):
     transacoes = Transacao.objects.all()
     return render(request, 'pages/home.html', {'transacoes': transacoes})
