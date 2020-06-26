@@ -10,73 +10,80 @@
             <p class="receitas">Receitas R$ 4 300,00</p>
             <p class="despesas">Despesas R$ 300,00</p>
         </div>
-        
 
         <h2>Transações</h2>
-        <h4>10 de Maio</h4>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages%}
+                    <li {% if message.tags %}class="alert alert-{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
 
-        <!--
-            <div class="col-2 add-div">
-            <i class="fas fa-plus"></i>Adicionar Tarefa
+        <div class="transactions">
 
-            <div class="col-9 search-div">
-                <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome da tarefa para buscar">
-                <i class="fas fa-search"></i>
-            </div>
-        </div> -->
+            {% for transacao in transacoes %}
+                <h4 class="date-transactions">{{ transacao.data_transacao }}</h4>
+
+                {% if transacao.pago == "nao_pago" and transacao.tipo_transacao == "receita" %}
+                    <div class="row transaction-item">
+                        <div class="col-10 item-div item-receita">
+                            <p>{{ transacao.descricao }}</p>
+                            <p class="item-valor">{{ transacao.valor }}</p> 
+                        </div>
+                        <div class="col-2 item-edit">
+                            <a href="delete/{{transacao.id}}"><span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span></a>
+                            <a href="edit/{{transacao.id}}"><span><i class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></i></span></a>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if transacao.pago == "nao_pago" and transacao.tipo_transacao == "despesa" %}
+                    <div class="row transaction-item">
+                        <div class="col-10 item-div item-despesa">
+                            <p>{{ transacao.descricao }}</p>
+                            <p class="item-valor">{{ transacao.valor }}</p> 
+                        </div>
+                        <div class="col-2 item-edit">
+                            <a href="delete/{{transacao.id}}"><span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span></a>
+                            <a href="edit/{{transacao.id}}"><span><i class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></i></span></a>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if transacao.pago == "pago" and transacao.tipo_transacao == "receita" %}
+                    <div class="row transaction-item">
+                        <div class="col-10 item-div item-pago-receita">
+                            <p>{{ transacao.descricao }}</p>
+                            <p class="item-valor">{{ transacao.valor }}</p> 
+                        </div>
+                        <div class="col-2 item-edit">
+                            <a href="delete/{{transacao.id}}"><span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span></a>
+                            <a href="edit/{{transacao.id}}"><span><i class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></i></span></a>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if transacao.pago == "pago" and transacao.tipo_transacao == "despesa" %}
+                    <div class="row transaction-item">
+                        <div class="col-10 item-div item-pago-despesa">
+                            <p>{{ transacao.descricao }}</p>
+                            <p class="item-valor">{{ transacao.valor }}</p> 
+                        </div>
+                        <div class="col-2 item-edit">
+                            <a href="delete/{{transacao.id}}"><span><i class="iconify icon-delete" data-icon="ic:baseline-delete-forever" data-inline="false"></i></span></a>
+                            <a href="edit/{{transacao.id}}"><span><i class="iconify icon-edit" data-icon="fa-solid:edit" data-inline="false"></i></span></a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            <a id="add-link" href="transaction/">
+                <button type="button" class="btn btn-primary btn-lg">Adicionar Transação</button>
+            </a>
+            
         
-        <ul class="transaction-list">
-            <li class="row m-auto transaction-item">
-                <div class="col-10 transaction-div">
-                    <p>Salário</p>
-                    <p>R$ + 4 000,00</p> 
-                </div>
-                <div class="col-2 transaction-edit">
-                    <span><i class="fas fa-trash"></i></span>
-                    <span><i class="fas fa-edit"></i></span>
-                </div>
-            </li>
-            <li class="row m-auto transaction-item">
-                <div class="col-10 transaction-div">
-                    <p class="transaction-name">Conta de internet</p>
-                    <p class="transaction-value">R$ - 100,00</p>
-                </div>
-                <div class="col-2 transaction-edit">
-                    <span><i class="fas fa-trash"></i></span>
-                    <span><i class="fas fa-edit"></i></span>
-                </div>
-            </li>
-            <li class="row m-auto transaction-item">
-                <div class="col-10 transaction-div">
-                    <p>Boleto Cartão de Crédito</p>
-                    <p>R$ - 200,00</p>
-                </div>
-                <div class="col-2 transaction-edit">
-                    <span><i class="fas fa-trash"></i></span>
-                    <span><i class="fas fa-edit"></i></span>
-                </div>
-            </li>
-            <li class="row m-auto transaction-item">
-                <div class="col-10 transaction-div">
-                    <p>Presente</p>
-                    <p>R$ + 300,00</p>
-                </div>
-                <div class="col-2 transaction-edit">
-                    <span><i class="fas fa-trash"></i></span>
-                    <span><i class="fas fa-edit"></i></span>
-                </div>
-            </li>
-            <li class="row m-auto transaction-item">
-                <div class="col-10 transaction-div">
-                    <p>Titulo da Tarefa</p>
-                    <p>R$ - 100,00</p>
-                </div>
-                <div class="col-2 transaction-edit">
-                    <span><i class="fas fa-trash"></i></span>
-                    <span><i class="fas fa-edit"></i></span>
-                </div>
-            </li>
-           
-        </ul>   
+        </div>
+          
     </div>
 {% endblock %}
