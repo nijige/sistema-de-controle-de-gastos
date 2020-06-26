@@ -178,6 +178,17 @@ form label, form input {
 }
 
 
+/* Grupo */
+.membro-div p{
+    color: white;
+    font-size: 20px;
+}
+
+.id-grupo {
+    font-size: 18px;
+}
+
+
 /* Rodapé */
 
 footer {

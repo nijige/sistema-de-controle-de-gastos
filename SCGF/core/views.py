@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
-from .models import Transacao
-from .forms import TransacaoForm
+from .models import Transacao, Grupo
+from .forms import TransacaoForm, GrupoForm
 from django.contrib import messages
 from django.db.models import Sum
 
@@ -9,16 +9,25 @@ from django.db.models import Sum
 
 def home(request):
     transacoes = Transacao.objects.filter(user=request.user)
-    receita = Transacao.objects.filter(user=request.user, tipo_transacao='receita').aggregate(sum=Sum('valor'))['sum']
-    despesa = Transacao.objects.filter(user=request.user, tipo_transacao='despesa').aggregate(sum=Sum('valor'))['sum']
+    receita = Grupo.soma_receita(transacoes)
+    despesa = Grupo.soma_despesa(transacoes)
 
     return render(request, 'pages/home.html', {'transacoes': transacoes, 'receita': receita, 'despesa': despesa})
 
 def group(request):
-    receita = Transacao.objects.filter(tipo_transacao='receita').aggregate(sum=Sum('valor'))['sum']
-    despesa = Transacao.objects.filter(tipo_transacao='despesa').aggregate(sum=Sum('valor'))['sum']
+    grupo = Grupo.objects.last()
+    membros = grupo.membros.all()
+      
+    receitas = Grupo.receita_membros(membros)
+    despesas = Grupo.despesa_membros(membros)
     
-    return render(request, 'pages/group.html', {'receita': receita, 'despesa': despesa})
+    grupos = Grupo.objects.all()
+
+    transacao = Transacao.objects.all()
+    receita = Grupo.soma_receita(transacao)
+    despesa = Grupo.soma_despesa(transacao)
+        
+    return render(request, 'pages/group.html', {'grupos': grupos, 'membros': membros, 'receitas': receitas, 'despesas': despesas, 'receita': receita, 'despesa': despesa})
 
 def newTransaction(request):
     if request.method == 'POST':
@@ -57,3 +66,16 @@ def deleteTransaction(request, id):
     messages.info(request, 'Transação deletada com sucesso.')
 
     return redirect('/')
+
+def newGroup(request):
+    if request.method == 'POST':
+        form = GrupoForm(request.POST)
+        
+        if form.is_valid():
+            grupo = form.save(commit=False)
+            grupo.save()
+
+            return redirect('group')
+    else:
+        form = GrupoForm()
+        return render(request, 'pages/newgroup.html', {'form': form})

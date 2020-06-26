@@ -1,14 +1,47 @@
 
 {% extends 'base.html' %}
 
-{% block title %}Group - SCGF{% endblock %}
+{% block title %}Grupo - SCGF{% endblock %}
 
 {% block content %}
-
-    <div id="saldo"></div>
-    <div class="values">
-        <p class="receitas">Receitas R$ {{ receita }}</p>
-        <p class="despesas">Despesas R$ {{ despesa }}</p>
+    <div class="col-8 m-auto home-div">
+        <div id="saldo"></div>
+        <div class="values">
+            <p class="receitas">Receitas R$ {{ receita }}</p>
+            <p class="despesas">Despesas R$ {{ despesa }}</p>
+        </div>
     </div>
+
+        {% for grupo in grupos %}
+            <h1>{{ grupo.nome }}</h1>
+
+            <h4 class="id-grupo">ID do Grupo - {{ grupo.id }}</h4>
+            <h2>Membros</h2>
+
+            <div>
+                <div class="item-div membro-div">
+                    {% for membro in membros %}
+                        <p>Membro: {{ membro }}</p>     
+                    {% endfor %}    
+                </div>
+
+                <div class="item-div receitas">
+                    {% for rec in receitas %}
+                        <p>Receita R$ {{ rec }}</p>
+                    {% endfor %}
+                </div>
+
+                <div class="item-div despesas">
+                    {% for desp in despesas %}
+                        <p>Despesa R$ {{ desp }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+
+    
+    <a id="add-link" href="newgroup/">
+        <button type="button" class="btn btn-primary btn-lg">Criar Grupo</button>
+    </a>
     
 {% endblock %}
