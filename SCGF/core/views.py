@@ -87,10 +87,12 @@ def newGroup(request):
         form = GrupoForm()
         return render(request, 'pages/newgroup.html', {'form': form})
 
-Class Relatorio(TemplateView):
-    template_name = 'pages/relatorio.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["qs"] = Transacao.objects.all()
-        return context
+
+def relatorio(request):
+    template_name = 'pages/relatorio.html'
+    transacoes = Transacao.objects.filter(user=request.user)
+    receita = Grupo.soma_receita(transacoes)
+    despesa = Grupo.soma_despesa(transacoes)
+
+    return render(request, template_name, {'transacoes': transacoes, 'receita': receita, 'despesa': despesa})
