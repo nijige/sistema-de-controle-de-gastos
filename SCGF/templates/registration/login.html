@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Login - SCGF{% endblock %}
+
+{% block content %}
+
+    <div class="row login-div">
+        <div class="col-4 m-auto home-div">
+            <h1 class="title-login">LOGIN</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}">
+
+                {{ form|crispy }}
+
+                <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            </form>
+
+            <p class="change-text">Não possui uma conta? <a href="/accounts/register">Cadastre-se</a></p>
+        </div>
+    </div>
+
+{% endblock %}

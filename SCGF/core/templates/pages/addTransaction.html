@@ -1,0 +1,16 @@
+
+{% extends 'base.html' %}
+
+
+{% block title %}Nova Transação - SCGF{% endblock %}
+
+{% block content %}
+    <h1>Adicione nova Transação</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="col-8 m-auto">
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-success" value="Criar Transação">
+        </div>
+    </form>
+{% endblock %}
