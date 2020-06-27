@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Cadastro - SCGF{% endblock %}
+
+{% block content %}
+
+<div class="row register-div">
+    <div class="col-4 m-auto home-div">
+        <h1 class="title-register">CADASTRO</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}">
+
+            {{ form|crispy }}
+
+            <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+        </form>
+
+        <p class="change-text">Já possui uma conta? <a href="/">Clique aqui!</a></p>
+    </div>
+</div>
+
+{% endblock %}

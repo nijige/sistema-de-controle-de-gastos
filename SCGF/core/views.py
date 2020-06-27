@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import Transacao, Grupo
 from .forms import TransacaoForm, GrupoForm
 from django.contrib import messages
 from django.db.models import Sum
+from django.views.generic import TemplateView
 
 # Create your views here.
-
+@login_required
 def home(request):
     transacoes = Transacao.objects.filter(user=request.user)
     receita = Grupo.soma_receita(transacoes)
@@ -14,6 +16,7 @@ def home(request):
 
     return render(request, 'pages/home.html', {'transacoes': transacoes, 'receita': receita, 'despesa': despesa})
 
+@login_required
 def group(request):
     grupo = Grupo.objects.last()
     membros = grupo.membros.all()
@@ -29,6 +32,7 @@ def group(request):
         
     return render(request, 'pages/group.html', {'grupos': grupos, 'membros': membros, 'receitas': receitas, 'despesas': despesas, 'receita': receita, 'despesa': despesa})
 
+@login_required
 def newTransaction(request):
     if request.method == 'POST':
         form = TransacaoForm(request.POST)
@@ -43,6 +47,7 @@ def newTransaction(request):
         form = TransacaoForm()
         return render(request, 'pages/addTransaction.html', {'form': form})
 
+@login_required
 def editTransaction(request, id):
     transacao = get_object_or_404(Transacao, pk=id)
     form = TransacaoForm(instance=transacao)
@@ -59,6 +64,7 @@ def editTransaction(request, id):
     else:
         return render(request, 'pages/editTransaction.html', {'form': form, 'transacao': transacao})
 
+@login_required
 def deleteTransaction(request, id):
     transacao = get_object_or_404(Transacao, pk=id)
     transacao.delete()
@@ -67,6 +73,7 @@ def deleteTransaction(request, id):
 
     return redirect('/')
 
+@login_required
 def newGroup(request):
     if request.method == 'POST':
         form = GrupoForm(request.POST)
@@ -79,3 +86,11 @@ def newGroup(request):
     else:
         form = GrupoForm()
         return render(request, 'pages/newgroup.html', {'form': form})
+
+Class Relatorio(TemplateView):
+    template_name = 'pages/relatorio.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["qs"] = Transacao.objects.all()
+        return context
